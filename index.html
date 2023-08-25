@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<HTML>
+
+<HEAD>
+    <meta content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</HEAD>
+
+<BODY>
+    <center>
+        <canvas id="Canvas" width="1000" height="600"></canvas>
+    </center>
+    <script>
+        var canvasSizeX = 1000;
+        var canvasSizeY = 600;
+        var boardSize = 500;
+        var COL = 12;
+        var CELL_SIZE = boardSize / COL;
+        var initialPositionX = (canvasSizeX - boardSize) / 2;
+        var initialPositionY = 30;
+        var playerName = "プレイヤー";
+        var CPUName = "コンピュータ";
+        var gameFinished = [false, null];
+    </script>
+    <script src="./library/createjs-2015.11.26.min.js"></script>
+    <script src="./library/jquery-3.2.1.slim.min.js"></script>
+    <script src="./library/thread.min.js"></script>
+    <script src="./util.js"></script>
+    <script src="./render.js"></script>
+    <script src="./ai.js"></script>
+    <script src="./aiMultiThread.js"></script>
+    <script src="./game.js"></script>
+    <script src="./rule.js"></script>
+    <script src="./images.js"></script>
+    <script src="./debug.js"></script>
+    <script src="./initialization.js"></script>
+    <script src="./dataSet.js"></script>
+
+    <center>
+        <input type="button" value="　最初から　" onclick="window.location.reload();" />
+        <input type="button" value="　棋譜　" onclick="Debug.displayGameRecord();" />
+        <input type="button" value="　Debug　" onclick="Debug.functionTest();" />
+
+        <div class="msg">
+            <span id="errorMsg"></span>
+            <span id="debugMsg"></span>
+        </div>
+
+        <script>
+            var text = "";
+            Render.changeCPUImg();
+        </script>
+        <form name="montecarlo">
+            プレイアウト数：
+            <input type="number" value="50000" min="0" max="100000" class="LimitPlayoutCount" id="LimitPlayoutCount"> 閾値：
+            <input type="number" value="200" min="0" max="100000" class="threshold" id="threshold">
+        </form>
+    </center>
+</BODY>
+
+</HTML>
